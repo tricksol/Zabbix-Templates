@@ -1,0 +1,41 @@
+#!/bin/sh
+
+ubntUser=ubnt
+ubntPass=ubnt
+
+sshPassBin=/usr/bin/sshpass
+sshBin=/usr/bin/ssh
+
+ubntHost=$1
+lowerThan=$2
+
+if [ -z ${ubntHost} ]; then
+  echo 0
+  exit
+fi
+
+# Get stations CCQ
+ubntCcq=`${sshPassBin} -p ${ubntPass} ${sshBin} -o StrictHostKeyChecking=no -l ${ubntUser} ${ubntHost} "wstalist ath0 | grep ccq" | awk '{print $3}' | cut -d, -f1 | grep -v ^0$`
+
+sum=0
+count=0
+# Perform reply
+if [ ! -z ${lowerThan} ]; then
+  for ccq in ${ubntCcq}; do
+    if [ ${ccq} -lt ${lowerThan} ]; then
+      count=$[${count}+1]
+    fi
+  done
+  echo ${count}
+else
+  for ccq in ${ubntCcq}; do
+    count=$[${count}+1]
+    sum=$[${sum}+${ccq}]
+  done
+
+  if [ ${count} -eq 0 ]; then
+    echo 100
+  else
+    echo $[${sum}/${count}]
+  fi
+fi

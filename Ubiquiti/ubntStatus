@@ -1,0 +1,12 @@
+#!/bin/sh
+
+ubntUser=ubnt
+ubntPass=ubnt
+
+sshPassBin=/usr/bin/sshpass
+sshBin=/usr/bin/ssh
+
+ubntHost=$1
+ubntKey=$2
+
+${sshPassBin} -p ${ubntPass} ${sshBin} -o StrictHostKeyChecking=no -l ${ubntUser} ${ubntHost} mca-status | grep "^${ubntKey}=" | cut -d= -f2
