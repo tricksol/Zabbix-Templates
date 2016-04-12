@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2015-02-10T20:50:35Z</date>
+    <date>2016-04-12T14:00:57Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -17,20 +17,7 @@
                     <name>Templates</name>
                 </group>
             </groups>
-            <applications>
-                <application>
-                    <name>Device Status</name>
-                </application>
-                <application>
-                    <name>Healthy</name>
-                </application>
-                <application>
-                    <name>Interfaces</name>
-                </application>
-                <application>
-                    <name>Wifi Status</name>
-                </application>
-            </applications>
+            <applications/>
             <items>
                 <item>
                     <name>Device uptime</name>
@@ -40,7 +27,7 @@
                     <snmp_oid>SNMPv2-MIB::sysUpTime.0</snmp_oid>
                     <key>sysUpTime</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>3</value_type>
@@ -340,8 +327,8 @@
                     <multiplier>0</multiplier>
                     <snmp_oid>iso.2.840.10036.3.1.2.1.4.5</snmp_oid>
                     <key>ubntFirmware</key>
-                    <delay>300</delay>
-                    <history>7</history>
+                    <delay>3600</delay>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>0</status>
                     <value_type>4</value_type>
@@ -384,9 +371,9 @@
                     <snmp_oid/>
                     <key>icmppingloss</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
-                    <status>1</status>
+                    <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
@@ -422,10 +409,10 @@
                     <multiplier>0</multiplier>
                     <snmp_oid/>
                     <key>icmpping</key>
-                    <delay>60</delay>
-                    <history>7</history>
+                    <delay>30</delay>
+                    <history>90</history>
                     <trends>365</trends>
-                    <status>1</status>
+                    <status>0</status>
                     <value_type>3</value_type>
                     <allowed_hosts/>
                     <units/>
@@ -464,9 +451,9 @@
                     <snmp_oid/>
                     <key>icmppingsec</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
-                    <status>1</status>
+                    <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>s</units>
@@ -845,7 +832,7 @@
                     <snmp_community/>
                     <multiplier>0</multiplier>
                     <snmp_oid/>
-                    <key>icmppingloss[,3,,,]</key>
+                    <key>icmpping[&lt;target&gt;,&lt;packets&gt;,&lt;interval&gt;,&lt;size&gt;,&lt;timeout&gt;]</key>
                     <delay>30</delay>
                     <history>90</history>
                     <trends>365</trends>
@@ -1229,7 +1216,11 @@
             </items>
             <discovery_rules/>
             <macros/>
-            <templates/>
+            <templates>
+                <template>
+                    <name>Template Ubiquiti - Airmax-5.6</name>
+                </template>
+            </templates>
             <screens/>
         </template>
     </templates>
@@ -1285,10 +1276,20 @@
             <dependencies/>
         </trigger>
         <trigger>
-            <expression>{Template Ubiquiti - Nanostation:icmppingloss[,3,,,].last(0)}&lt;&gt;0</expression>
+            <expression>{Template Ubiquiti - Nanostation:icmpping[&lt;target&gt;,&lt;packets&gt;,&lt;interval&gt;,&lt;size&gt;,&lt;timeout&gt;].last(0)}&lt;&gt;0</expression>
             <name>{HOSTNAME} Ping problem {ITEM.LASTVALUE} loss</name>
             <url/>
             <status>1</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
+            <expression>{Template Ubiquiti - Nanostation:icmpping.count(10m,0)}&gt;15</expression>
+            <name>{HOSTNAME} Ping problem {ITEM.LASTVALUE} loss &gt; 15 in 10m</name>
+            <url/>
+            <status>0</status>
             <priority>4</priority>
             <description/>
             <type>0</type>

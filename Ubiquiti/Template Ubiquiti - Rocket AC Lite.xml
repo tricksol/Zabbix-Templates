@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>2.0</version>
-    <date>2015-02-10T20:49:45Z</date>
+    <date>2016-04-12T14:01:36Z</date>
     <groups>
         <group>
             <name>Templates</name>
@@ -384,9 +384,9 @@
                     <snmp_oid/>
                     <key>icmppingloss</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
-                    <status>1</status>
+                    <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>%</units>
@@ -423,7 +423,7 @@
                     <snmp_oid/>
                     <key>icmpping</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
                     <status>1</status>
                     <value_type>3</value_type>
@@ -464,9 +464,9 @@
                     <snmp_oid/>
                     <key>icmppingsec</key>
                     <delay>60</delay>
-                    <history>7</history>
+                    <history>90</history>
                     <trends>365</trends>
-                    <status>1</status>
+                    <status>0</status>
                     <value_type>0</value_type>
                     <allowed_hosts/>
                     <units>s</units>
@@ -1450,6 +1450,16 @@
     </templates>
     <triggers>
         <trigger>
+            <expression>{Template Ubiquiti - Rocket AC Lite:sysUpTime.nodata(5m)}=1</expression>
+            <name>Device No Data</name>
+            <url/>
+            <status>0</status>
+            <priority>5</priority>
+            <description>No SNMP data for 5 min</description>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
+        <trigger>
             <expression>({Template Ubiquiti - Rocket AC Lite:ifOperStatus.9.last(0)}=2) and ({Template Ubiquiti - Rocket AC Lite:ifAdminStatus.9.last(0)}=1)</expression>
             <name>Link down on {HOSTNAME} Ath0</name>
             <url/>
@@ -1463,7 +1473,7 @@
             <expression>({Template Ubiquiti - Rocket AC Lite:ifOperStatus.4.last(0)}=2) and ({Template Ubiquiti - Rocket AC Lite:ifAdminStatus.4.last(0)}=1)</expression>
             <name>Link down on {HOSTNAME} Eth0</name>
             <url/>
-            <status>1</status>
+            <status>0</status>
             <priority>4</priority>
             <description>Link down on {HOSTNAME} Eth0</description>
             <type>0</type>
@@ -1499,8 +1509,50 @@
             <type>0</type>
             <dependencies/>
         </trigger>
+        <trigger>
+            <expression>{Template Ubiquiti - Rocket AC Lite:icmpping.count(5m,0)}&gt;3</expression>
+            <name>{HOSTNAME} Ping problem {ITEM.LASTVALUE} loss &gt; 3 in 5m</name>
+            <url/>
+            <status>0</status>
+            <priority>4</priority>
+            <description/>
+            <type>0</type>
+            <dependencies/>
+        </trigger>
     </triggers>
     <graphs>
+        <graph>
+            <name>Frequency</name>
+            <width>500</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Ubiquiti - Rocket AC Lite</host>
+                        <key>ubntRadioFreq.1</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
         <graph>
             <name>ICMP Responce Time</name>
             <width>900</width>
@@ -1529,6 +1581,82 @@
                     <item>
                         <host>Template Ubiquiti - Rocket AC Lite</host>
                         <key>icmppingsec</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Signal</name>
+            <width>500</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Ubiquiti - Rocket AC Lite</host>
+                        <key>ubntRadioTxPower.1</key>
+                    </item>
+                </graph_item>
+            </graph_items>
+        </graph>
+        <graph>
+            <name>Wireless Errors</name>
+            <width>500</width>
+            <height>200</height>
+            <yaxismin>0.0000</yaxismin>
+            <yaxismax>100.0000</yaxismax>
+            <show_work_period>1</show_work_period>
+            <show_triggers>1</show_triggers>
+            <type>0</type>
+            <show_legend>1</show_legend>
+            <show_3d>0</show_3d>
+            <percent_left>0.0000</percent_left>
+            <percent_right>0.0000</percent_right>
+            <ymin_type_1>0</ymin_type_1>
+            <ymax_type_1>0</ymax_type_1>
+            <ymin_item_1>0</ymin_item_1>
+            <ymax_item_1>0</ymax_item_1>
+            <graph_items>
+                <graph_item>
+                    <sortorder>0</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>00C800</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Ubiquiti - Rocket AC Lite</host>
+                        <key>ifOutErrors.9</key>
+                    </item>
+                </graph_item>
+                <graph_item>
+                    <sortorder>1</sortorder>
+                    <drawtype>0</drawtype>
+                    <color>C80000</color>
+                    <yaxisside>0</yaxisside>
+                    <calc_fnc>2</calc_fnc>
+                    <type>0</type>
+                    <item>
+                        <host>Template Ubiquiti - Rocket AC Lite</host>
+                        <key>ifInErrors.9</key>
                     </item>
                 </graph_item>
             </graph_items>
