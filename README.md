@@ -1,7 +1,7 @@
 Zabbix-Templates
 ================
 
-Zabbix-Templates for Zabbix 2.2.6
+Zabbix-Templates for Zabbix 2.4 and on
 
 Here are templates for devices that I use daily at my Wireless ISP
 
