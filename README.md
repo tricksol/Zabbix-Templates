@@ -18,3 +18,8 @@ Mikrotik Devices
 
 The mikrotik templates are setup for SNMP v1 but you can do a mass update of the item checks and change 
 type to SNMP v2. 
+
+Mimosa Devices
+===============
+
+Tested on B5C and B11 with firmware 1.31.& 1.44
