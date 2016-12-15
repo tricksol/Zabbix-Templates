@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.0</version>
+    <date>2016-12-15T21:47:24Z</date>
+    <value_maps>
+        <value_map>
+            <name>cambiumPTP650MasterSlave</name>
+            <mappings>
+                <mapping>
+                    <value>0</value>
+                    <newvalue>Master</newvalue>
+                </mapping>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Slave</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>cambiumPTP650ReceiveModulationMode</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Bpsk (63%)</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Qpsk (63%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>Qpsk (87%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>16QAM (63%) Single A</newvalue>
+                </mapping>
+                <mapping>
+                    <value>8</value>
+                    <newvalue>16QAM (87%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>10</value>
+                    <newvalue>64QAM (75%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>12</value>
+                    <newvalue>64QAM (92%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>14</value>
+                    <newvalue>256QAM (81%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>15</value>
+                    <newvalue>16QAM (63%) Single B</newvalue>
+                </mapping>
+                <mapping>
+                    <value>16</value>
+                    <newvalue>16QAM (63%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>18</value>
+                    <newvalue>16QAM (87%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>20</value>
+                    <newvalue>64QAM (75%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>22</value>
+                    <newvalue>64QAM (92%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>24</value>
+                    <newvalue>256QAM (81%) Dual</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>CambiumPTP650TransmitModulationMode</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Bpsk (63%)</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Qpsk (63%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>Qpsk (87%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>6</value>
+                    <newvalue>16QAM (63%) Single A</newvalue>
+                </mapping>
+                <mapping>
+                    <value>8</value>
+                    <newvalue>16QAM (87%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>10</value>
+                    <newvalue>64QAM (75%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>12</value>
+                    <newvalue>64QAM (92%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>14</value>
+                    <newvalue>256QAM (81%) Single</newvalue>
+                </mapping>
+                <mapping>
+                    <value>15</value>
+                    <newvalue>16QAM (63%) Single B</newvalue>
+                </mapping>
+                <mapping>
+                    <value>16</value>
+                    <newvalue>16QAM (63%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>18</value>
+                    <newvalue>16QAM (87%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>20</value>
+                    <newvalue>64QAM (75%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>22</value>
+                    <newvalue>64QAM (92%) Dual</newvalue>
+                </mapping>
+                <mapping>
+                    <value>24</value>
+                    <newvalue>256QAM (81%) Dual</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
